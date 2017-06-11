@@ -1,5 +1,3 @@
-# mosis-hybrid-mobile-app
-
 ## Synopsis
 
 Hybrid mobile app (Android) project for Mobile systems and services class - "Navigator" -  app guide through traffic. More details in Power Point presentation.
