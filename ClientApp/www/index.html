@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+      
+		
+		<!--load jquery mobile css -->
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+		
+		<!-- custom css -->
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		
+
+        <title>Hello World</title>
+		
+			<style>
+			/*#map-page, #map-canvas { width: 100%; height: 100%; padding: 0; }*/
+			.ui-controlgroup-horizontal { text-align: center; }
+		
+		th {
+    border-bottom: 1px solid #d6d6d6;
+}
+
+tr:nth-child(even) {
+    background: #e9e9e9;
+}
+			</style>
+		
+		
+	
+	
+    </head>
+    <body>
+	
+	<!---------------------------------------------------------------------------->
+			
+		<div data-role="page"  id="pageLogin">
+
+			<div data-role="header">
+				<h1>Prijava</h1>
+			</div>
+
+			<div data-role="main" class="ui-content">
+				 <div id="logoKanvas" style="width:300px; margin:auto"></div>
+					
+						<div class="ui-field-contain">
+						
+							<label for="email">E-mail:</label>
+							<input type="email" name="email" id="emailLogin" placeholder="Vas email..">
+							
+							</br>
+							
+							<label for="password">Password:</label>
+							<input type="password" name="password" id="passwordLogin" placeholder="Vas password..">
+							
+							</br>
+
+							<button class="ui-btn ui-shadow ui-corner-all" id="buttonLogin">Prijavi me</button>
+							
+							<a href="#panelLogin" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" style="float:left; margin-left:5%; margin-top:8px">No text</a>
+							<a href="#pageRegister" style="float:right; margin-top:10px">Registracija</a>
+							
+							<!--<a href="#addNewObject">test</a>-->
+						</div>
+					
+				
+			</div>
+			
+			<div data-role="panel" id="panelLogin" data-display="overlay" data-position="right" style="width:80%">
+							
+							<label for="server">Adresa servera:</label>
+							<input type="text" name="server" id="server" placeholder="">
+			
+							<label for="port">Broj porta:</label>
+							<input type="tel" name="port" id="port" placeholder="">
+							
+							<button class="ui-btn ui-shadow ui-corner-all" id="buttonPostaviServer">Postavi podesavanja</button>
+							
+			</div>
+		<!--	<div data-role="footer">
+				<h1>Footer Text</h1>
+			</div> -->
+
+		</div> <!--end page-->
+		
+		<!--end pageLogin------------------------------------------------------------------>
+		
+		
+		<!--start pageRegister------------------------------------------------------------->
+		
+		
+		<div data-role="page"  id="pageRegister">
+
+			<div data-role="header">
+				<h1>Registracija</h1>
+			</div>
+
+			<div data-role="main" class="ui-content">
+				
+					
+						<div class="ui-field-contain">
+						
+							<label for="email">E-mail:</label>
+							<input type="email" name="email" id="email" placeholder="Vas email..">
+							
+							</br>
+							
+							<label for="firstname">Ime:</label>
+							<input type="text" name="firstname" id="firstname" placeholder="Vaze prezime..">
+							
+							</br>
+							
+							<label for="lastname">Prezime:</label>
+							<input type="text" name="lastname" id="lastname" placeholder="Vase ime..">
+							
+							</br>
+							
+							<label for="tel">Broj telefona:</label>
+							<input type="tel" name="tel" id="tel" placeholder="Vas broj telefona..">
+							
+							</br>
+							
+							<label for="password">Password:</label>
+							<input type="password" name="password" id="password" placeholder="Vas password..">
+							
+							</br>
+							
+							<label for="npassword">Ponovite password:</label>
+							<input type="password" name="npassword" id="npassword" placeholder="Vas password drugi put..">
+							
+							</br>
+
+						    <div data-role="controlgroup" data-type="horizontal">
+								<button class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right" id="buttonRegister">OK</button>
+
+								<a href="#pageLogin" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-right">Nazad</a>
+							</div>
+
+						</div>
+					
+				
+			</div>
+
+		<!--	<div data-role="footer">
+				<h1>Footer Text</h1>
+			</div> -->
+
+		</div> <!--end page-->
+	
+	
+	    <!--end pageRegister------------------------------------------------------------->
+		
+		
+		
+		<!--start mainMapPage------------------------------------------------------------->
+		
+		
+		<div data-role="page"  id="map-page" data-url="map-page">
+            
+            
+
+			<div data-role="header" data-position="fixed" id="headerMap">
+			  <div data-role="navbar">
+				<ul>
+				  <li><a href="#map-page" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+				  <li><a href="#ListView" data-icon="bullets">List</a></li>
+				  <li><a href="#addNewObject" data-icon="plus">Add</a></li>
+                  
+            <!-- panel content goes here -->
+				 <!-- <li><a href="#mypanel" data-icon="gear">Options</a></li>-->
+                  
+                  
+				</ul>
+			  </div>
+			</div>
+            
+                     
+            
+
+			<div data-role="main" class="ui-content" id="map-canvas">
+                
+                
+             
+                
+				   
+			</div>
+			
+			
+				<div data-role="footer" data-position="fixed" id="footerMap">
+					<a href="#mypanel" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" style="float:left; margin-left:25%">No text</a>
+					<a class="ui-btn ui-icon-power ui-btn-icon-notext ui-corner-all" style="float:right; margin-right:25%" id="buttonLogout">No text</a>
+				</div>
+                
+                     
+                
+               <div data-role="panel" id="mypanel" data-display="overlay" data-position="right" style="width:50%">
+                         
+                                <label for="flip-zastoj">Zastoji:</label>
+                                <select  id="flip-zastoj" data-role="slider">
+									<option value="0">Off</option>
+									<option value="1" selected>On</option>
+								</select>                               
+                                
+                                
+                                 <label for="flip-pomoc">Pomoc na putu:</label>
+                                <select id="flip-pomoc" data-role="slider">
+									<option value="0">Off</option>
+									<option value="1" selected>On</option>
+								</select>
+                                
+                                 <label for="flip-udes">Udesi:</label>
+                                <select  id="flip-udes" data-role="slider">
+									<option value="0">Off</option>
+									<option value="1" selected>On</option>
+								</select>
+                                
+                                 <label for="flip-nezgoda">Nezgode:</label>
+                                <select id="flip-nezgoda" data-role="slider">
+									<option value="0">Off</option>
+									<option value="1" selected>On</option>
+								</select>
+                                
+                                <label for="flip-korisnici">Korisnici:</label>
+                                <select id="flip-korisnici" data-role="slider">
+									<option value="0">Off</option>
+									<option value="1" selected>On</option>
+								</select>
+                                
+ 
+
+
+<div class="ui-field-contain">
+<label for="select-native-1">Radius:</label>
+<select name="radius" id="radius">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5" selected>5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10" >10</option>
+</select>
+</div>
+                
+                </div><!-- /panel -->
+               
+            
+			
+			
+
+		<!--	<div data-role="footer">
+				<h1>Footer Text</h1>
+			</div> -->
+
+		</div> <!--end page--> <!--end page-->
+		
+		
+		
+	
+	
+	    <!--end mainMapPage------------------------------------------------------------->
+        
+        <!--start listView------------------------------------------------------------->
+		
+		
+		<div data-role="page"  id="ListView" data-url="ListView">
+		
+		<div data-role="header" data-position="fixed" id="header">
+			  <div data-role="navbar">
+				<ul>
+				  <li><a href="#map-page" data-icon="home">Home</a></li>
+				  <li><a href="#ListView" data-icon="bullets" class="ui-btn-active ui-state-persist">List</a></li>
+				  <li><a href="#addNewObject" data-icon="plus" >Add</a></li>
+				 
+				</ul>
+			  </div>
+			</div>
+
+			<div data-role="main" class="ui-content ui-content-list">
+                	<ul data-role="listview" id="listaDogadjaja" data-inset="true" class="ui-listview-outer">
+                        
+                    </ul>
+				
+			</div>
+			
+		
+				
+				<div data-role="panel" id="listItem-panel" data-display="overlay" data-position="right" style="width:70%">
+					Proba
+				
+			    </div>
+			
+			
+
+		<!--	<div data-role="footer">
+				<h1>Footer Text</h1>
+			</div> -->
+
+		</div> <!--end page--> <!--end page-->
+	
+	
+	    <!--end listView------------------------------------------------------------->
+		
+		
+		<!--start addNewObjectPage------------------------------------------------------------->
+		
+		
+		<div data-role="page"  id="addNewObject" data-url="addNewObject">
+		
+		<div data-role="header" data-position="fixed" id="header">
+			  <div data-role="navbar">
+				<ul>
+				  <li><a href="#map-page" data-icon="home">Home</a></li>
+				  <li><a href="#ListView" data-icon="bullets">List</a></li>
+				  <li><a href="#addNewObject" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+				 
+				</ul>
+			  </div>
+			</div>
+
+			<div data-role="main" class="ui-content">
+			<div  class="ui-grid-a">
+				<div class="ui-block-a" id="mapAdd">
+                    				
+				</div>
+				
+				<div class="ui-block-b" id="addNewObjRT" style="padding-left:5%">
+					
+
+					
+					<label for="long">Duzina:</label>
+				    <input type="tel" name="long" id="long">
+					
+					<label for="lat">Sirina:</label>
+				    <input type="tel" name="lat" id="lat">					
+					
+					
+					
+					
+				</div>
+				
+				</div>
+				
+				
+				<select id="event" name="event" >
+					<option value="zastoj">Zastoj</option>
+					<option value="nezgoda">Nezgoda</option>
+					<option value="udes">Udes</option>
+					<option value="pomoc">Pomoc na putu</option>
+			    </select>
+				
+
+                
+				<textarea  id="description" name="description" placeholder="Dodajte opis..."></textarea>
+				
+				<button class="ui-btn ui-shadow ui-corner-all" id="buttonAddNewObject">Dodaj</button>
+                
+                			
+			    
+				   
+			</div>
+			
+			
+			
+		
+			
+
+		<!--	<div data-role="footer">
+				<h1>Footer Text</h1>
+			</div> -->
+
+		</div> <!--end page--> <!--end page-->
+	
+	
+	    <!--end newObjectPage------------------------------------------------------------->
+        
+        
+  
+	
+	
+	    <!--end newObjectPage------------------------------------------------------------->
+		
+		
+		<!--load scripts-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		
+		<!--jquery javascript-->
+		<script src="js/jquery-1.12.3.js"></script>
+		<script src="js/jquery.mobile-1.4.5.js"></script>
+		
+		<!--socket.io load-->
+		<!--<script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script><!--10.0.3.2-->
+		<!--!!!!!!!!!!!!!Da se importuje zajedno sa aplikacijom !!!!!!^^^^^^^^-->
+		
+		<!--<script src="http://mosis-62976.onmodulus.net:8080/socket.io/socket.io.js"</script>-->
+		
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		<!--za mape-->
+				<script src="http://maps.googleapis.com/maps/api/js"></script>
+		
+
+    </body>
+</html>
+
+
+<script>
+
+	 
+	
+   
+	  
+    sessionStorage.setItem("zastojiFlag", "1");
+    sessionStorage.setItem("nezgodeFlag", "1");
+    sessionStorage.setItem("udesiFlag", "1");
+    sessionStorage.setItem("pomocFlag", "1");
+    sessionStorage.setItem("korisniciFlag", "1");
+    sessionStorage.setItem("radius", 5);
+	
+	sessionStorage.setItem("server","localhost");
+	sessionStorage.setItem("port","8080");
+    
+    var oznakeNezgode = [];
+	var oznakeUdesi = [];
+	var oznakeZastoji = [];
+	var oznakePomoc = [];
+    var oznakeKorisnici = [];
+    var mapa;
+    var mapa2;
+    var krug = null;
+    var currentPositionMarker;
+    //var mapCenter = new google.maps.LatLng(14.668626, 121.24295);
+    var markerAdd = null;
+    
+    var nezgodaI = 0;
+    var udesI = 0;
+    var zastojI = 0;
+    var pomocI = 0;
+    var korisniciI = 0;
+	var prviPut = true;
+    
+    
+    
+   
+    function iscrtajDogadjaje(mapa, oznake) {
+       
+		for (var i = 0; i < oznake.length; i++) {
+            if(oznake[i] != undefined)
+			oznake[i].setMap(mapa);
+        }
+	}
+
+	function obrisiMarkere(markers) {
+  
+		for (var i = 0; i < markers.length; i++) {
+             if(markers[i] != undefined)
+			markers[i].setMap(null);
+         }
+	}
+    
+	
+	
+    
+    
+    
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+	
+	//premesten Wacth
+	//currentPositionMarker = new google.maps.LatLng(14.668626, 121.24295);
+    
+	}
+	else{
+	alert("Vas uredjaj ne podrzava geolokaciju");
+	}
+	
+	function updateCurrentLocation(position) { ////!proveraaaaaaaaaaa!!!!!!!!!!!!!!!!!!!!!!!!
+		sessionStorage.setItem("userLatitude", 0);
+        sessionStorage.setItem("userLongitude", 0);
+		
+		//alert("lat " + parseFloat(position.coords.latitude) +  " long " + parseFloat(position.coords.longitude));
+		sessionStorage.setItem("userLatitude", parseFloat(position.coords.latitude));
+        sessionStorage.setItem("userLongitude", parseFloat(position.coords.longitude));
+		
+		currentPositionMarker.setPosition( new google.maps.LatLng(position.coords.latitude, position.coords.longitude) );
+		//mapa.panTo( new google.maps.LatLng(position.coords.latitude, position.coords.longitude) );
+		//postaviKrug();
+		//postaviti da se azurira marker trenutne lokacije!!!!!!!!!!!!
+		//currentPositionMarker.setMapa(mapa);
+    }
+	
+	function updateCLFailed(err){
+	
+	}
+	
+	options = {
+		enableHighAccuracy: true,
+		timeout: 3000,
+		maximumAge: 0
+	};
+
+    //var socket = null;
+
+			var serv="http://"+sessionStorage.getItem("server")+":"+sessionStorage.getItem("port");
+            //var socket = io.connect("http://127.0.0.1:8080");//10.0.3.2
+			//var socket = io.connect(serv);
+			//var socket = io.connect('http://server-app-8080.herokuapp.com:8080');
+		
+		
+		//var socket = io.connect(serv);
+		var socket = io(serv);
+		socket.on('connect', function(){
+		//alert("Uspesno ste se povezali");
+		
+		postaviSockete();
+		
+		});
+		socket.on('event', function(data){});
+		socket.on('disconnect', function(){});
+		
+		var flagConError = false;
+		socket.on('connect_error', function(error){
+		
+		//alert(error);
+		if(!flagConError){
+		alert("Doslo je do greske prilikom povezivanja sa serverom. " +
+		"Molim Vas proverite internet konekciju ili upisite odgovarajucu " +
+		"adresu servera i broj porta", "Greska prilikom povezivanja");
+		$("#server").val(sessionStorage.getItem("server"));
+		$("#port").val(sessionStorage.getItem("port"));
+		$("#panelLogin").panel("open");
+		flagConError = true;
+		}
+		
+		});
+		
+		socket.on('error', function(error){notifikacija( 'greska prilikom povezivanja sa serverom',
+		"greska");});
+		
+		
+		$("#buttonPostaviServer").click(function(){
+		sessionStorage.setItem("server", $("#server").val());
+		sessionStorage.setItem("port", $("#port").val());
+		//alert("proba click");
+		socket = null;
+		serv = "http://"+sessionStorage.getItem("server")+":"+sessionStorage.getItem("port");
+		socket = io(serv);
+		
+		socket.on('connect', function(){
+		//alert("Uspesno ste se povezali");
+		
+		postaviSockete();
+		});
+		
+	});
+    
+
+
+		
+$(document).ready(function(){
+    
+	/*$(document).delegate('#map-page', 'pageshow', function () {
+    var the_height = ($(window).height() - $(this).find('[data-role="header"]').height() - $(this).find('[data-role="footer"]').height());
+    $(this).height($(window).height()).find('[data-role="content"]').height(the_height);
+});*/
+
+    
+	 //var heightM =  - $("#headerMap").outerHeight() - $("#footerMap").outerHeight();
+      $("#map-canvas").css("height",  $(window).height() -59.25 - 80);  
+    
+    //provera opcija
+    $("#flip-zastoj").on('change', function() {
+    sessionStorage.setItem("zastojiFlag", $("#flip-zastoj").val());
+    update();
+    });
+    
+    $("#flip-nezgoda").change(function(){
+    sessionStorage.setItem("nezgodeFlag",$("#flip-nezgoda").val());
+    update();
+    });
+    
+    $("#flip-udes").change(function(){
+    sessionStorage.setItem("udesiFlag", $("#flip-udes").val());
+    update();
+    });
+    
+    $("#flip-pomoc").change(function(){
+    sessionStorage.setItem("pomocFlag", $("#flip-pomoc").val());
+    update();
+    });
+    
+     $("#flip-korisnici").change(function(){
+    sessionStorage.setItem("korisniciFlag", $("#flip-korisnici").val());
+    update();
+    });
+    
+    $("#radius").change(function(){
+    sessionStorage.setItem("radius", parseFloat($("#radius").val()));
+    update();
+    });
+
+
+		
+		
+		$(window).on('beforeunload', function(){
+    socket.close();
+		});
+		
+		
+
+
+
+
+ $("#buttonRegister").click(function(event){
+        if(socket !== undefined)
+        {       
+			
+					//podaci za registrovanje				
+					
+					socket.emit('register',{
+                     ime : $("#firstname").val(),
+					prezime : $("#lastname").val(),
+					sifra : $("#password").val(),
+					 sifra2 : $("#npassword").val(),
+					 tel : $("#tel").val(),		
+					 email : $("#email").val(),
+                        });
+						
+						
+						
+				    //slusa da li se uspesno registrovao
+				    socket.on('register1', function(data){
+                      if(data.status == "uspeh")
+					  {
+					 $("#emailLogin").val($("#email").val());
+					    $("#passwordLogin").val($("#password").val());
+						
+                     $("#firstname").val("");
+					$("#lastname").val("");
+					$("#password").val("");
+					 $("#npassword").val("");
+					 $("#tel").val("");		
+					 $("#email").val("");
+						
+						notifikacija("Uspesno ste se registrovali. :)", "Uspesna registracija");
+						buttonLogin.click();
+						
+					  
+					  }
+					  else{
+						notifikacija("Pokusaj registracije je bio neuspesan. Pokusajte ponovo.", "Neuspesna registracija");
+					  }
+					 
+                    });
+						
+						}
+			
+			});
+			
+			
+			
+ $("#buttonLogin").click(function(event){
+        if(socket !== undefined)
+        {       
+			
+					//podaci za registrovanje				
+					
+                    var userEmail = $("#emailLogin").val();
+                    sessionStorage.setItem("userEmail", userEmail);
+                   
+				   //alert("lat" + parseFloat(sessionStorage.getItem("userLong")));
+					socket.emit('login',{                     
+					sifra : $("#passwordLogin").val(),
+				    email : sessionStorage.getItem("userEmail"),
+                    long :  parseFloat(sessionStorage.getItem("userLong")),
+                    lat :  parseFloat(sessionStorage.getItem("userLat")), 
+                    radius : sessionStorage.getItem("radius"),
+                    zastojiFlag : sessionStorage.getItem("zastojiFlag"),
+                    nezgodeFlag : sessionStorage.getItem("nezgodeFlag"),
+                    udesiFlag : sessionStorage.getItem("udesiFlag"),
+                    pomocFlag : sessionStorage.getItem("pomocFlag"),
+                    korisniciFlag : sessionStorage.getItem("korisniciFlag")
+                        });
+                        
+                    					
+						
+				    //slusa da li se uspesno registrovao
+				    socket.on('uspesanLogin', function(data){
+                      // alert(data.poruka);
+                      
+                      if(data.provera == "uspeh"){
+                       
+					   window.location = "#map-page";
+                       
+                       //dodato za kontaktiranje servera od strane klijenta na odrejeni vremenski period
+                       var myVar = setInterval(update, 30000);
+					     $("#email").html("");
+                          $("#password").html("");
+						  if(!prviPut){
+						  google.maps.event.trigger(mapa, 'resize');
+						  google.maps.event.trigger(mapa2, 'resize');
+						  }
+						  prviPut = false;
+                      }
+                      else{
+                          //alert("Neuspesan pokusaj prijave. Pokusajte ponovo.")
+						  notifikacija("Neuspesan pokusaj prijave. Pokusajte ponovo.",
+						  "Neuspesna prijava");
+                          $("#email").html("");
+                          $("#password").html("");
+                      }
+                       
+                       
+                       
+                    
+
+                    });
+                    
+                   
+				  
+                    
+                    
+                     
+						
+						}
+			
+			});
+            
+            
+             $("#buttonLogout").click(function(event){
+        if(socket !== undefined)
+        {       
+			
+					//podaci za registrovanje		
+					
+					socket.emit('logout',{                   
+					email : sessionStorage.getItem("userEmail")
+                        });	
+						
+						
+						//alert("ovde smo");
+                    //slusa da li se uspesno registrovao
+				    socket.on('uspesanLogout', function(data){
+                      // alert(data.poruka); alert("ovde smo heyyy");
+					  var str = data.status;
+					  if(str.localeCompare("uspeh") == 0){
+					 // alert("Uspesno");
+					   window.location = "#pageLogin";
+					   $("#emailLogin").val("");
+					   $("#passwordLogin").val("");
+					   }
+					   else{
+					   alert("Neuspesan logout");
+					   }
+                    });
+						
+						
+					                  
+                    				
+                    
+                    
+                     
+						
+						}
+			
+			});
+            
+            
+            
+            //za dodavanje novog objekta u bazu
+    $("#buttonAddNewObject").click(function(event){
+        
+        if(socket !== undefined)
+        {       
+            var adresa = null;
+            var geocoder = new google.maps.Geocoder;
+            
+            //za uzimanje adrese
+            var latlng = {lat: parseFloat($("#lat").val()), lng: parseFloat($("#long").val())};
+            
+            geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+            if (results[1]) {                
+               
+                adresa = results[0].formatted_address;
+                //alert(JSON.stringify(results));
+                //alert(adresa);
+               
+            } else {
+                notifikacija('Greska prilikom geolokacije', 'greska');
+            }
+            } else {
+            alert('Geocoder failed due to: ' + status);
+            }
+            
+            //alert("kon proba" + adresa);	
+            
+				/*	socket.emit('addNewObject',{                     
+					duzina : $("#long").val(),
+				    sirina : $("#lat").val(),
+                    dogadjaj : $("#event").val(),
+                    opis : $("#description").val(),
+                    adresa: adresa,
+                    email : "zeljkicc@hotmail.com",///////////
+                    ime : "Zeljko"////////////
+                        }); */
+                    socket.emit('addNewObject',{                     
+					loc : { type : "Point", coordinates : [ parseFloat($("#long").val()), parseFloat($("#lat").val()) ] },
+                    dogadjaj : $("#event").val(),
+                    opis : $("#description").val(),
+                    adresa: adresa,
+                    email : sessionStorage.getItem("userEmail")///////////
+                    
+                        });
+            
+        });
+				
+				
+						
+						
+				    //slusa da li se uspesno registrovao
+				    socket.on('successAddNO', function(data){
+					//alert("Tu smo "  + data.status);
+					    var str = data.status
+						if(str.localeCompare('uspeh')==0){
+                        
+                       //alert("Notifikacija ali js " );
+						notifikacija("Uspesno ste dodali objekat", "Uspeh")
+						
+						//prikazuPoruku("Uspesno ste dodali novi dogadjaj");
+						//alert("Notifikacija ali js " );
+					   window.location = "#map-page";
+					   google.maps.event.trigger(mapa, 'resize');
+					   }
+					   else{
+					   notifikacija("Objekat nije dodat. Pokusajte ponovo", "Neupseh");
+					   }
+                    });
+						
+						}
+			
+	    });
+			
+			
+			
+			//dodato da bi se povecala visina za mapu sa leve strane
+            //var hMap = $("#addNewObjRT").css("height");
+             var height = ($(window).height() - $("#addNewObject").find('[data-role="header"]').outerHeight() - $("#addNewObject").find('[data-role="footer"]').outerHeight());
+            //$("#map_canvas").height(height);
+			$("#mapAdd").css("height", height/2);
+			
+			
+		
+			//dodato za klik na mapu
+
+	
+
+			
+        
+    });
+    
+    
+    
+    
+    
+			
+			
+			
+			
+	
+	
+	
+	
+	//sa app.html
+	$( document ).on( "pageinit", "#map-page", function() {
+        
+    var defaultLatLng = new google.maps.LatLng(34.0983425, -118.3267434);  // Default to Hollywood, CA when no geolocation support
+    if ( navigator.geolocation ) {
+        function success(pos) {
+            // Location found, show map with these coordinates
+            setTimeout(draw, 2000);
+			
+			function draw(){
+			sessionStorage.setItem("userLong",  pos.coords.longitude);
+			sessionStorage.setItem("userLat",  pos.coords.latitude);
+            drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+        }
+        function fail(error) {
+		setTimeout(draw, 2000);
+              // Failed to find location, show default map
+			
+			function draw(){
+			drawMap(defaultLatLng);
+            //drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+        }
+        // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+        navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
+    } else {
+	setTimeout(draw, 2000);
+              // Failed to find location, show default map
+			
+			function draw(){
+			drawMap(defaultLatLng);
+            //drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+        //drawMap(defaultLatLng);  // No geolocation support, show default map
+    }
+    function drawMap(latlng) {
+        
+        var myOptions = {
+            zoom: 12,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl:true,
+			rotateControl:true
+        };
+        mapa = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+        // Add an overlay to the map of current lat/lng
+        currentPositionMarker = new google.maps.Marker({
+            position: latlng,
+            map: mapa,      //!!!!!!!!!!!!!!!!!!!!!izbrisan
+            title: "Greetings!"
+        });
+		
+		navigator.geolocation.watchPosition(updateCurrentLocation, updateCLFailed, options);
+        
+       iscrtajDogadjaje(mapa, oznakeNezgode);
+        iscrtajDogadjaje(mapa, oznakePomoc);
+        iscrtajDogadjaje(mapa, oznakeUdesi);
+        iscrtajDogadjaje(mapa, oznakeZastoji);
+    
+        postaviKrug(); 
+        
+       // iscrtajSveDogadjaje();
+     
+	 
+	 
+         
+    }
+	
+	
+    
+    
+    
+    
+    
+    
+});  
+
+
+$( document ).on( "pageinit", "#addNewObject", function() {
+			
+    var defaultLatLng = new google.maps.LatLng(43.318581, 21.890787);  // Default to Hollywood, CA when no geolocation support
+    if ( navigator.geolocation ) {
+        function success(pos) {
+		setTimeout(draw, 2000);
+              // Failed to find location, show default map
+			
+			function draw(){
+			drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            //drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+            // Location found, show map with these coordinates
+            
+			
+			//postavljanje lokacije u text boxove
+			$("#long").val(pos.coords.longitude);
+			
+			$("#lat").val(pos.coords.latitude);
+        }
+        function fail(error) {
+		setTimeout(draw, 2000);
+              // Failed to find location, show default map
+			
+			function draw(){
+            drawMap(defaultLatLng);  // Failed to find location, show default map
+			}
+			$("#long").val(21.890787);
+
+			$("#lat").val(43.318581);
+        }
+        // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+        navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
+    } else {
+	setTimeout(draw, 2000);
+              // Failed to find location, show default map
+			
+			function draw(){
+        drawMap(defaultLatLng);  // No geolocation support, show default map
+		}
+    }
+    function drawMap(latlng) {
+       
+        var myOptions = {
+            zoom: 15,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+			zoomControl:true
+        };
+        mapa2 = new google.maps.Map(document.getElementById("mapAdd"), myOptions);
+        
+        //postavnljeno za klik na mapu
+       google.maps.event.addListener(mapa2, 'click', function(event) {
+
+            if(markerAdd!=null)
+            markerAdd.setMap(null);
+            
+            markerAdd = new google.maps.Marker({position: event.latLng, map: mapa2});
+            
+            $("#long").val(event.latLng.lng());
+			
+			$("#lat").val(event.latLng.lat());
+            
+
+        });
+        // Add an overlay to the map of current lat/lng
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: mapa2,
+            title: "Greetings!"
+        });
+
+    }
+	
+
+	
+	
+}); 
+
+
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function success(pos) {
+  var crd = pos.coords;
+  
+  sessionStorage.setItem("userLong", crd.longitude);
+  sessionStorage.setItem("userLat", crd.latitude);
+
+ /* alert('Your current position is:');
+  alert('Latitude : ' + crd.latitude);
+  alert('Longitude: ' + crd.longitude);
+  alert('More or less ' + crd.accuracy + ' meters.'); */
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+
+
+
+
+
+function smestanjeDogadjaja(dogadjaji){
+    	/*var nezgodaI = 0;
+		var udesI = 0;
+		var zastojI = 0;
+		var pomocI = 0; */
+        
+        oznakeZastoji =[];
+        oznakeNezgode = [];
+        oznakeUdesi = [];
+        oznakePomoc = [];
+        oznakeKorisnici =[];
+      
+    for (var i = 0; i < dogadjaji.length; i++) {
+        //alert(dogadjaji[0].dogadjaj);
+						switch (dogadjaji[i].dogadjaj) {
+							case 'zastoj':
+								oznakeZastoji[zastojI] = new google.maps.Marker({
+									icon: 'img/jam.png',
+									position: new google.maps.LatLng(dogadjaji[i].loc.coordinates[1], dogadjaji[i].loc.coordinates[0]),
+									title: dogadjaji[i].opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaji[i].opis
+								});
+
+								google.maps.event.addListener(oznakeZastoji[zastojI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Zastoj');
+									$('#item_desc').val(this.description);
+								});
+								++zastojI;
+								break;
+							case 'nezgoda':
+								oznakeNezgode[nezgodaI] = new google.maps.Marker({
+									icon: 'img/accident.png',
+									position: new google.maps.LatLng(dogadjaji[i].loc.coordinates[1], dogadjaji[i].loc.coordinates[0]),
+									title: dogadjaji[i].opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaji[i].opis
+								});
+
+								google.maps.event.addListener(oznakeNezgode[nezgodaI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Nezgoda');
+									$('#item_desc').val(this.description);
+								});
+								++nezgodaI;
+								break;
+							case 'udes':
+								oznakeUdesi[udesI] = new google.maps.Marker({
+									icon: 'img/crash.png',
+									position: new google.maps.LatLng(dogadjaji[i].loc.coordinates[1], dogadjaji[i].loc.coordinates[0]),
+									title: dogadjaji[i].opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaji[i].opis
+								});
+
+								google.maps.event.addListener(oznakeUdesi[udesI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Udes');
+									$('#item_desc').val(this.description);
+								});
+								++udesI;
+								break;
+							case 'pomoc':
+								oznakePomoc[pomocI] = new google.maps.Marker({
+									icon: 'img/help.png',
+									position: new google.maps.LatLng(dogadjaji[i].loc.coordinates[1], dogadjaji[i].loc.coordinates[0]),
+									title: dogadjaji[i].opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaji[i].opis
+								});
+
+								google.maps.event.addListener(oznakePomoc[pomocI++], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Pomoć');
+									$('#item_desc').val(this.description);
+								});
+								pomocI++;
+								break;
+                            default:
+                                //alert( dogadjaji[i].ime + " " +  dogadjaji[i].prezime + " " +  dogadjaji[i].email + dogadjaji[i].long + dogadjaji[i].lat);
+								if(dogadjaji[i].email != sessionStorage.getItem("userEmail")){
+                                oznakeKorisnici[korisniciI] = new google.maps.Marker({
+									icon: 'img/user.png',
+									position: new google.maps.LatLng(parseFloat(dogadjaji[i].lat), parseFloat(dogadjaji[i].long)),//!!!!!!!!!!!!
+								//	title: dogadjaji[i].ime,
+									//id: dogadjaji[i].id,
+									description: dogadjaji[i].email
+								});
+
+								google.maps.event.addListener(oznakeKorisnici[korisniciI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Korisnik');
+									$('#item_desc').val(this.description);
+								});
+								korisniciI++;
+								}
+                               // break;
+                                  
+						};
+					}
+                    
+    
+}
+
+
+            function napraviMarker(dogadjaj){
+                //alert("Dogadjaj " + dogadjaj);
+                var marker= null;
+                switch(dogadjaj.dogadjaj){
+                    case 'zastoj':
+                    oznakeZastoji[zastojI] = new google.maps.Marker({
+									icon: 'img/jam.png',
+									position: new google.maps.LatLng(dogadjaj.loc.coordinates[1], dogadjaj.loc.coordinates[0]),
+									title: dogadjaj.opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaj.opis
+								});
+
+								google.maps.event.addListener(oznakeZastoji[zastojI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Zastoj');
+									$('#item_desc').val(this.description);
+								});
+                                 marker = oznakeZastoji[zastojI];
+								++zastojI;
+                   
+                    break;
+                    
+                    case 'nezgoda':
+								oznakeNezgode[nezgodaI] = new google.maps.Marker({
+									icon: 'img/accident.png',
+									position: new google.maps.LatLng(dogadjaj.loc.coordinates[1], dogadjaj.loc.coordinates[0]),
+									title: dogadjaj.opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaj.opis
+								});
+
+								google.maps.event.addListener(oznakeNezgode[nezgodaI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Nezgoda');
+									$('#item_desc').val(this.description);
+								});
+                                 marker = oznakeNezgode[nezgodaI];
+								++nezgodaI;
+                               
+								break;
+                    
+                    case 'udes':
+								oznakeUdesi[udesI] = new google.maps.Marker({
+									icon: 'img/crash.png',
+									position: new google.maps.LatLng(dogadjaj.loc.coordinates[1], dogadjaj.loc.coordinates[0]),
+									title: dogadjaj.opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaj.opis
+								});
+
+								google.maps.event.addListener(oznakeUdesi[udesI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Udes');
+									$('#item_desc').val(this.description);
+								});
+								
+                                marker = oznakeUdesi[udesI];
+								++udesI;
+								break;
+							case 'pomoc':
+								oznakePomoc[pomocI] = new google.maps.Marker({
+									icon: 'img/help.png',
+									position: new google.maps.LatLng(dogadjaj.loc.coordinates[1], dogadjaj.loc.coordinates[0]),
+									title: dogadjaj.opis,
+									//id: dogadjaji[i].id,
+									description: dogadjaj.opis
+								});
+
+								google.maps.event.addListener(oznakePomoc[pomocI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Pomoć');
+									$('#item_desc').val(this.description);
+								});
+                                marker = oznakePomoc[pomocI];
+								++pomocI;                                
+								break;
+                                default:
+                               // alert( oznakeKorisnici[korisniciI].ime + " " +  oznakeKorisnici[korisniciI].prezime + " " +  oznakeKorisnici[korisniciI].email);
+								
+                                oznakeKorisnici[korisniciI] = new google.maps.Marker({
+									icon: 'img/user.png',
+									position: new google.maps.LatLng(dogadjaji[i].long, dogadjaji[i].lat),
+									title: dogadjaji[i].ime,
+									//id: dogadjaji[i].id,
+									description: dogadjaji[i].email
+								});
+
+								google.maps.event.addListener(oznakeKorisnici[korisniciI], 'click', function () {
+									$('#item_id').val(this.id);
+									$('#item_type').val('Korisnik');
+									$('#item_desc').val(this.description);
+								});
+								++korisniciI;
+                                //break;  
+                }
+                return marker;
+            }
+
+
+            function update() {
+                if(socket !== undefined)
+                    {       			
+                                      		
+                                        
+                                        socket.emit('update',{                     
+                                        email : sessionStorage.getItem("userEmail"),
+                                        long :  parseFloat(sessionStorage.getItem("userLong")),
+                                        lat :  parseFloat(sessionStorage.getItem("userLat")),
+                                        radius : parseFloat(sessionStorage.getItem("radius")),
+                                        zastojiFlag : sessionStorage.getItem("zastojiFlag"),
+                                        nezgodeFlag : sessionStorage.getItem("nezgodeFlag"),
+                                        udesiFlag : sessionStorage.getItem("udesiFlag"),
+                                        pomocFlag : sessionStorage.getItem("pomocFlag"),
+                                        korisniciFlag : sessionStorage.getItem("korisniciFlag")
+                                            });
+                                            
+                                            //smestanjeDogadjaja(dogadjaji);
+                                            
+                                            
+                                    
+                                            
+                                            }
+                                
+                                
+                    }
+                    
+                    
+       function postaviKrug(){
+	   //alert("postavi krug");
+	   if(krug != null){
+	   krug.setMap(null); 
+	   }
+           krug = new google.maps.Circle({
+         
+            center:new google.maps.LatLng(parseFloat(sessionStorage.getItem("userLat")),parseFloat(sessionStorage.getItem("userLong"))),
+            radius: parseFloat(sessionStorage.getItem("radius")) * 1000,
+            strokeColor:"#0000FF",
+            strokeOpacity:0.8,
+            strokeWeight:2,
+            fillColor:"#0000FF",
+            fillOpacity:0.1
+            });
+            
+           
+           // if(krug != null || krug != undefined){
+			
+			//}
+            krug.setMap(mapa);           
+       }
+
+
+       function iscrtajSveDogadjaje(dogadjaji){
+           
+           if(krug != undefined)
+           krug.setMap(null);
+                           obrisiMarkere(oznakeNezgode);
+                           obrisiMarkere(oznakePomoc);
+                           obrisiMarkere(oznakeUdesi);
+                           obrisiMarkere(oznakeZastoji);
+                           obrisiMarkere(oznakeKorisnici);
+                           
+                           
+                           nezgodaI = 0;
+		                   udesI = 0;
+		                   zastojI = 0;
+		                   pomocI = 0;
+                           korisniciI = 0;
+          
+                           smestanjeDogadjaja(dogadjaji);   
+						   
+						   //if(mapa!=undefined){
+						   //alert("ovo je update " + parseFloat(sessionStorage.getItem("userLat")) + "lat " + sessionStorage.getItem("userLong"));
+							//mapa.panTo( new google.maps.LatLng(sessionStorage.getItem("userLat"), sessionStorage.getItem("userLong")) );
+							//}
+							
+						   postaviListuDogadjaja(dogadjaji);
+           
+     
+                               // alert("nezgode " + sessionStorage.getItem("nezgodeFlag"));
+                       if(sessionStorage.getItem("nezgodeFlag") == "1")                
+                       iscrtajDogadjaje(mapa, oznakeNezgode);
+                       
+                        if(sessionStorage.getItem("pomocFlag") == "1")  
+                       iscrtajDogadjaje(mapa, oznakePomoc);
+                       
+                        if(sessionStorage.getItem("udesiFlag") == "1")  
+                       iscrtajDogadjaje(mapa, oznakeUdesi);
+                       
+                       if(sessionStorage.getItem("zastojiFlag") == "1")
+                       iscrtajDogadjaje(mapa, oznakeZastoji);
+                       
+                        if(sessionStorage.getItem("korisniciFlag") == "1")
+                       iscrtajDogadjaje(mapa, oznakeKorisnici);
+                       
+                       postaviKrug();
+          
+          
+       }
+       
+       
+        function proveriRastojanje(lat1, lon1, lat2, lon2) {
+			var R = 6371; 
+			var pis = 3.14159265358979 / 180.0;
+			return Math.acos(Math.sin(lat1*pis) * Math.sin(lat2*pis) +
+			Math.cos(lat1*pis) * Math.cos(lat2*pis) *
+			Math.cos(lon2*pis - lon1*pis)) * R;
+		}
+     
+ 
+ function postaviListuDogadjaja(dogadjaji){
+
+$("#listaDogadjaja").empty();
+ for( var i =0; i< dogadjaji.length; i++){
+ if(dogadjaji[i].dogadjaj == null)
+ continue;
+ var elListe = document.createElement("li");
+  $("#listaDogadjaja").append(elListe);
+  
+  elListe.ref = dogadjaji[i];
+  $(elListe).click(function(){
+		postaviDetalje(this.ref);
+	}
+  )
+  var link = document.createElement("a");
+  $(link).attr("href","#");
+  $(link).css("padding-left","85px");
+  $(elListe).append(link);
+  
+  var slika = document.createElement("img");
+  
+  switch (dogadjaji[i].dogadjaj){
+	case "udes":
+	$(slika).attr("src", "img/crashImg.png");
+	break;
+	case "nezgoda":
+	$(slika).attr("src", "img/accidentImg.png");
+	break;
+	case "pomoc":
+	$(slika).attr("src", "img/helpImg.png");
+	break;
+	default: 
+	$(slika).attr("src", "img/jamImg.png");
+	
+  };
+ 
+ $(link).append(slika);
+ 
+  var h = document.createElement("p");
+   $(h).html(dogadjaji[i].adresa);
+    $(link).append(h);
+	$(h).css({"font-size":"15px", "font-weight":"bold"});
+	
+	var  paragraph = document.createElement("p");
+	$(link).append(paragraph);
+	$(paragraph).html(dogadjaji[i].opis);
+
+}
+					   $('#listaDogadjaja').listview().listview('refresh');
+					   //$(".ui-icon-plus").css("border","0px");
+					  $('.ui-content-list').css("padding","0px");
+                      $('#listaDogadjaja').css("margin","0px"); 					  
+ }
+ 
+ 
+    
+	function postaviDetalje(dogadjaj)
+	{
+	
+	
+	
+	$( "#listItem-panel" ).empty();
+	//$( "#listItem-panel" ).css("padding", "10%");
+	
+	//data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow"
+	var tabela = document.createElement("table");
+	$( "#listItem-panel" ).append(tabela);
+	$(tabela).attr("data-role", "table");
+	$(tabela).attr("data-mode", "columntoggletable");
+	$(tabela).attr("class", "ui-responsive ui-shadow");
+	
+	var thead = document.createElement("thead");
+	$(tabela).append(thead);
+	//$(thead).html("Detalji dogadjaja");
+	
+	var tr = document.createElement("tr");
+	$(thead).append(tr);
+	var th = document.createElement("th");
+	$(tr).append(th);
+	$(th).html("Detalji dogadjaja " + dogadjaj.dogadjaj);
+	
+	var tbody = document.createElement("tbody");
+	$(tabela).append(tbody);
+	
+	tr = document.createElement("tr");
+	$(tbody).append(tr);	
+	var td = document.createElement("td");
+	$(tr).append(td);
+	$(td).html("Adresa: " + dogadjaj.adresa);
+	
+	tr = document.createElement("tr");
+	$(tbody).append(tr);	
+	td = document.createElement("td");
+	$(tr).append(td);
+	$(td).html("Postavio: " + dogadjaj.email);
+	
+	tr = document.createElement("tr");
+	$(tbody).append(tr);	
+	td = document.createElement("td");
+	$(tr).append(td);
+	$(td).html("Duzina: " + dogadjaj.loc.coordinates[1]);
+	
+		tr = document.createElement("tr");
+	$(tbody).append(tr);	
+	td = document.createElement("td");
+	$(tr).append(td);
+	$(td).html("Sirina: " + dogadjaj.loc.coordinates[0]);
+	
+			tr = document.createElement("tr");
+	$(tbody).append(tr);	
+	td = document.createElement("td");
+	$(tr).append(td);
+	$(td).html("Opis: " + dogadjaj.opis);
+	
+	    //var h2 = document.createElement("h2");
+		//$( "#listItem-panel" ).append(h2);
+		//$(h2).html("Detalji dogadjaja " + dogadjaj.dogadjaj);
+		
+		//var h3 = document.createElement("h2");
+		//$( "#listItem-panel" ).append(h2);
+		//$(h3).html("Adresa: " + dogadjaj.adresa);
+		
+		//var h4 = document.createElement("h4");
+		//$( "#listItem-panel" ).append(h4);
+		//$(h4).html("Postavio: " + dogadjaj.ime);
+		
+		//var h5 = document.createElement("h5");
+		//$( "#listItem-panel" ).append(h5);
+		//$(h5).html("Geo. duzina: " + dogadjaj.loc.coordinates[1]);
+		
+		//var h51 = document.createElement("h5");
+		//$( "#listItem-panel" ).append(h51);
+		//$(h51).html("Geo. sirina: " + dogadjaj.loc.coordinates[0]);
+		
+		//var h6 = document.createElement("h6");
+		//$( "#listItem-panel" ).append(h6);
+		//$(h6).html("Opis: " + dogadjaj.opis);
+		
+						
+		
+		$( "#listItem-panel" ).panel( "open" );
+	}
+	
+	function postaviSockete(){
+            if(socket != undefined){
+              socket.on('sadrzajZaPrikaz', function(data){
+                 // alert(data);
+                       var dogadjaji = JSON.parse(data);    
+                       
+                       
+                          iscrtajSveDogadjaje(dogadjaji);
+					  
+                    });
+                    
+                    
+                    socket.on('notification', function(data){
+                        
+                        //alert(data);
+                        var dogadjaj = JSON.parse(data);
+						
+						if(sessionStorage.getItem("radius") > proveriRastojanje(
+						sessionStorage.getItem("userLat"), sessionStorage.getItem("userLong"),
+						dogadjaj.loc.coordinates[1], dogadjaj.loc.coordinates[0])){
+                        var marker = napraviMarker(dogadjaj);
+                        //alert("proba marker");
+                        
+                      //  if(marker != null){
+                        marker.setMap(mapa);
+						
+						signal(2);
+						window.plugins.toast.showLongBottom("Dodat novi dogadjaj od interesa: " +
+						dogadjaj.dogadjaj + " - " + dogadjaj.adresa)
+                      //  }
+                        }
+						else{
+						//alert("Ne dodaje se nista, izvan je");
+						}
+                            
+                    });
+					
+					
+					//pokupi bitne dogadjaje za servera
+    if(socket !== undefined)
+        {       
+				
+					
+					socket.emit('getObjects',{                     
+					email : "zeljkicc@hotmail.com"///////////Dodati jos o lokaciji korisnika.....			    
+                        });
+						
+						
+				    //slusa da li se uspesno registrovao
+					
+				    socket.on('getObjectsSucc', function(data){
+                       var dogadjaji = JSON.parse(data);
+                       postaviListuDogadjaja(dogadjaji);
+                       
+                       
+                       
+					  
+                    });
+                    
+                    
+                    
+                    
+                
+						
+						}
+            }
+			}
+			
+			function notifikacija(sadrzaj, naslov){
+					navigator.notification.alert(
+						sadrzaj, null, naslov, "OK!");
+					
+					}
+					
+			function signal(duzina){
+					navigator.notification.beep(duzina);
+			}
+</script>
