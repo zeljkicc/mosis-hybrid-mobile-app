@@ -1,6 +1,8 @@
 ## Synopsis
 
-Hybrid mobile app (Android) project for Mobile systems and services class - "Navigator" -  app guide through traffic. More details in Power Point presentation.
+Hybrid mobile app (Android) project for Mobile systems and services subject - "Navigator" -  app guide through traffic. 
+
+More details in the Power Point presentation.
 
 ## Technologies used
 
